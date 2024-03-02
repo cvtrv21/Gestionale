@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Biciclotti.BusinessLogic.Logic\**" />
+		<Compile Remove="Biciclotti.BusinessLogic\**" />
+		<Compile Remove="Biciclotti.Data\**" />
+		<Compile Remove="Biciclotti.Models\**" />
+		<Compile Remove="biciclotti.ServiceHost\**" />
+		<EmbeddedResource Remove="Biciclotti.BusinessLogic.Logic\**" />
+		<EmbeddedResource Remove="Biciclotti.BusinessLogic\**" />
+		<EmbeddedResource Remove="Biciclotti.Data\**" />
+		<EmbeddedResource Remove="Biciclotti.Models\**" />
+		<EmbeddedResource Remove="biciclotti.ServiceHost\**" />
+		<None Remove="Biciclotti.BusinessLogic.Logic\**" />
+		<None Remove="Biciclotti.BusinessLogic\**" />
+		<None Remove="Biciclotti.Data\**" />
+		<None Remove="Biciclotti.Models\**" />
+		<None Remove="biciclotti.ServiceHost\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="appsettings.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FrameQueues" Version="1.0.12" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="Biciclotti.BusinessLogic\Biciclotti.BusinessLogic.csproj" />
+		<ProjectReference Include="Biciclotti.Data\Biciclotti.Data.csproj" />
+		<ProjectReference Include="biciclotti.ServiceHost\Biciclotti.ServiceHost.csproj" />
+	</ItemGroup>
+
+</Project>

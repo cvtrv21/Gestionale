@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>bicycle_bike_icon_180257.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="BiciclottiWpf.Data\**" />
+    <Compile Remove="BiciclottiWpf.Models\**" />
+    <Compile Remove="BiciclottiWpf.ServiceHost\**" />
+    <EmbeddedResource Remove="BiciclottiWpf.Data\**" />
+    <EmbeddedResource Remove="BiciclottiWpf.Models\**" />
+    <EmbeddedResource Remove="BiciclottiWpf.ServiceHost\**" />
+    <None Remove="BiciclottiWpf.Data\**" />
+    <None Remove="BiciclottiWpf.Models\**" />
+    <None Remove="BiciclottiWpf.ServiceHost\**" />
+    <Page Remove="BiciclottiWpf.Data\**" />
+    <Page Remove="BiciclottiWpf.Models\**" />
+    <Page Remove="BiciclottiWpf.ServiceHost\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Images\bike_23739.png" />
+    <None Remove="Images\older.png" />
+    <None Remove="Images\warehouse_116463.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>7</VersionMinor>
+      <VersionMajor>8</VersionMajor>
+      <Guid>00020905-0000-0000-c000-000000000046</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bicycle_bike_icon_180257.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.102.2" />
+    <PackageReference Include="FrameQueues" Version="1.0.12" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.5.0" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.2" />
+    <PackageReference Include="ZXing.Net" Version="0.16.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="BiciclottiWpf.Data\BiciclottiWpf.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\bike_23739.png" />
+    <Resource Include="Images\older.png" />
+    <Resource Include="Images\warehouse_116463.png" />
+  </ItemGroup>
+
+</Project>
