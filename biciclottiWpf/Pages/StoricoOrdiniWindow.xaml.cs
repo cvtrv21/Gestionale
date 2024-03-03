@@ -31,115 +31,6 @@ namespace BiciclottiWpf
     /// </summary>
     public partial class StoricoOrdiniWindow : Window
     {
-        /*List<OrderRow> orderList = new List<OrderRow>();
-
-        private DispatcherTimer clockTimer;
-
-        public StoricoOrdiniWindow()
-        {
-            InitializeComponent();
-            GetOrders();
-            Loaded += Window_Loaded;
-
-            // Inizializza il timer per l'orologio
-            clockTimer = new DispatcherTimer();
-            clockTimer.Interval = TimeSpan.FromSeconds(1); // Aggiorna ogni secondo
-            clockTimer.Tick += ClockTimer_Tick; // Aggiungi un gestore per l'evento Tick del timer
-            clockTimer.Start(); // Avvia il timer
-
-            // Chiamata al metodo per inizializzare l'orologio
-            UpdateClock();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            //OrdiniListView.ItemsSource = orderList;
-
-            orderList.Reverse();
-
-            OrdiniEvasiListView.ItemsSource = orderList;
-
-        }
-
-        private void ClockTimer_Tick(object sender, EventArgs e)
-        {
-            // Aggiorna l'orologio ogni secondo
-            UpdateClock();
-        }
-
-        
-        private void GetOrders()
-        {
-            try
-            {
-                List<OrderRow> temp = new List<OrderRow>();
-
-                temp = QueueUnitOfWorks.BiciclottiRepository.GetAllOrderStocks();
-
-                orderList = temp.Where(order => order.order.StatoOrdine == "Evaso").ToList();
-
-                // Creazione della lista filtrata
-                var ListaFiltrata = orderList
-                    .Where(order => order.Bicycle != null)
-                    .Select(order => new
-                    {
-                        Cliente = order.order.NomeCliente,
-                        CO = order.CodiceOrdine,
-                        BikeID = order.BicycleId,
-                        Marca = order.Bicycle.Marca,
-                        Modello = order.Bicycle.Modello,
-                        Taglia = order.Taglia,
-                        Qta = order.Quantita,
-                        Guadagni = CalcolaProfitto(order),
-                    })
-                    .Reverse()
-                    .ToList();
-
-                // Aggiorna la ListView con la lista filtrata
-                OrdiniEvasiListView.ItemsSource = ListaFiltrata;
-
-                
-
-                OrdiniEvasiListView.Items.Refresh();
-
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        
-
-        private void UpdateClock()
-        {
-            // Ottieni l'orario corrente
-            DateTime now = DateTime.Now;
-
-            // Aggiorna il testo dell'OrologioTextBlock
-            OrologioTextBlock.Text = now.ToString("HH:mm:ss");
-        }
-
-        private float CalcolaProfitto(OrderRow order)
-        {
-            // Ottieni tutte le biciclette
-            var tutteLeBiciclette = QueueUnitOfWorks.BiciclottiRepository.GetAllBicycles();
-
-            // Cerca la bicicletta corrispondente
-            var biciclettaCorrispondente = tutteLeBiciclette.FirstOrDefault(b => b.BicycleId == order.BicycleId);
-
-            // Se la bicicletta è trovata, calcola il profitto
-            if (biciclettaCorrispondente != null)
-            {
-                float profitto = biciclettaCorrispondente.PrezzoVendita * order.Quantita;
-                return profitto;
-            }
-
-            // Restituisci 0 se la bicicletta non è trovata
-            return 0;
-        }
-        */
         private DispatcherTimer clockTimer;
 
         private DispatcherTimer miniTabellaTimer;
@@ -151,7 +42,7 @@ namespace BiciclottiWpf
             #region Timer Tabella Ordini Evasi
             // Inizializza il timer per l'aggiornamento della mini tabella
             miniTabellaTimer = new DispatcherTimer();
-            miniTabellaTimer.Interval = TimeSpan.FromSeconds(3); // Imposta l'intervallo desiderato (ad esempio, 2 secondi)
+            miniTabellaTimer.Interval = TimeSpan.FromSeconds(0.4); // Imposta l'intervallo desiderato (ad esempio, 2 secondi)
             miniTabellaTimer.Tick += MiniTabellaTimer_Tick; // Aggiungi un gestore per l'evento Tick del timer
             miniTabellaTimer.Start(); // Avvia il timer
 

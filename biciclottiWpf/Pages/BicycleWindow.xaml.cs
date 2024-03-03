@@ -31,7 +31,7 @@ namespace BiciclottiWpf
 
             // Inizializza il timer per l'orologio
             clockTimer = new DispatcherTimer();
-            clockTimer.Interval = TimeSpan.FromSeconds(1); // Aggiorna ogni secondo
+            clockTimer.Interval = TimeSpan.FromSeconds(0.3); // Aggiorna ogni secondo
             clockTimer.Tick += ClockTimer_Tick; // Aggiungi un gestore per l'evento Tick del timer
             clockTimer.Start(); // Avvia il timer
 

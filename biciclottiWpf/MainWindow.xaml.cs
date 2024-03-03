@@ -115,7 +115,7 @@ namespace BiciclottiWpf
             #region Timer Orologio
             // Inizializza il timer per l'orologio
             clockTimer = new DispatcherTimer();
-            clockTimer.Interval = TimeSpan.FromSeconds(1); // Aggiorna ogni secondo
+            clockTimer.Interval = TimeSpan.FromSeconds(0.1); // Aggiorna ogni secondo
             clockTimer.Tick += ClockTimer_Tick; // Aggiungi un gestore per l'evento Tick del timer
             clockTimer.Start(); // Avvia il timer
 
@@ -576,7 +576,7 @@ namespace BiciclottiWpf
         #endregion
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            this.Close();
         }
 
         #region Viste Dashboard

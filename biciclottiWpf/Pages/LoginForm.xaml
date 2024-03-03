@@ -1,0 +1,114 @@
+﻿<Window x:Class="BiciclottiWpf.Pages.LoginForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BiciclottiWpf.Pages"
+        mc:Ignorable="d"
+        Title="LoginForm" Height="600" Width="800" WindowState="Maximized">
+    <Window.Resources>
+        <!-- Definisci uno stile per i pulsanti -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#FF8BAFA1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="10 5"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                             BorderBrush="{TemplateBinding BorderBrush}"
+                             BorderThickness="{TemplateBinding BorderThickness}"
+                             CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <!-- Trigger per il cambio di colore del bordo quando il pulsante viene cliccato -->
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="BorderBrush" Value="White"/>
+                </Trigger>
+                <!-- Stato "MouseOver" (sopra con il mouse) -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF80E4AB"/>
+                    <!-- Cambia il colore di sfondo quando il mouse è sopra -->
+                    <Setter Property="Foreground" Value="White"/>
+                    <!-- Cambia il colore del testo quando il mouse è sopra -->
+                    <Setter Property="BorderBrush" Value="#008000"/>
+                    <!-- Cambia il colore del bordo quando il mouse è sopra -->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+       
+
+        <!-- Stile per il Border che avvolge il DataGrid -->
+        <Style x:Key="DataGridBorderStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="BorderBrush" Value="#FF8BAFA1"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Margin" Value="20"/>
+        </Style>
+
+        <!-- Aggiungi questo stile per gli Header delle colonne del DataGrid -->
+        <Style x:Key="DataGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#FF80E4AB"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Padding" Value="5,0"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="ChartBorderStyle" TargetType="Border">
+            <Setter Property="BorderBrush" Value="#FF8BAFA1"/>
+            <Setter Property="BorderThickness" Value="10"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="CornerRadius" Value="0"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="WhiteSmoke">
+         <StackPanel>            
+            <Border Height="76" Margin="0" Background="Gray" Opacity="1"/>
+            <Separator Height="1" Background="#FF80E4AB" Margin="0"/>
+        </StackPanel>
+
+        <!-- Barra Laterale -->
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 77 0 0" Background="LightGray" BorderBrush="#FF8BAFA1" BorderThickness="1 0" CornerRadius="0" Padding="8" Width="250" Height="915"/>
+
+
+
+        <!-- Login Form -->
+        <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="650" Height="450">
+            <StackPanel>
+                <!-- Title -->
+                <Border Height="50" Margin="0" Background="Gray" Opacity="1" CornerRadius="10 10 0 0">
+                    <TextBlock Text="Login" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" TextDecorations="Underline" FontSize="20" FontFamily="Calibri"/>
+                </Border>
+
+                <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="70">
+                    <TextBlock Text="Username:" Margin="30 0 0 0"/>
+                    <TextBox x:Name="UsernameTextBox"  GotFocus="OnTextBoxGotFocus" LostFocus="OnTextBoxLostFocus" Margin="30 10 30 0" Width="220" Height="30" FontSize="14"/>
+                    <TextBlock Text="Password:" Margin="30 10 0 0"/>
+                    <PasswordBox x:Name="PasswordBox"  GotFocus="OnPasswordBoxGotFocus" LostFocus="OnPasswordBoxLostFocus" Margin="30 10 30 0" Width="220" Height="30" FontSize="14"/>
+                    <CheckBox x:Name="RememberCheckBox" Content="Ricordami" Margin="30 10 30 0" FontSize="14" IsChecked="True"/>
+                    <Button Content="Login" Style="{StaticResource RoundedButtonStyle}" Click="LoginButton_Click" Margin="20 30 20 20" FontSize="15"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+
+
+        <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 -2">
+            <!-- Spazio vuoto con colore di sfondo -->
+            <Border Height="20" Margin="0" Background="Black" Opacity="0.7">
+                <TextBlock Text="© 2024 Development By: CTR Software. Tutti i diritti riservati." Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>
