@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biciclotti.Models.Models
+namespace Biciclotti.Models
 {
     public class User
     {

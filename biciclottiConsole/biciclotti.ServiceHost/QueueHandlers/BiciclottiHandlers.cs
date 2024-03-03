@@ -606,6 +606,105 @@ public class BiciclottiHandlers : IBiciclottiServerContracts
 
     #endregion
 
+    #region User
+    public List<User> GetAllUsers()
+    {
+        List<User> user = new List<User>();
+
+        try
+        {
+            user = context.Users.ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+
+        return user;
+    }
+
+    // Metodo per aggiungere un nuovo User
+    public User AddUser(User user)
+    {
+        bool successo = false;
+
+        try
+        {
+            // Verifico che l'elemento che aggiungiamo non sia già presente 
+            var control = context.Users.FirstOrDefault(c => c.Id == user.Id);
+
+            if (control == null)
+            {
+                context.Users.Add(user);
+                context.SaveChanges();
+                return user; // Restituisci l'user aggiunto
+
+            }
+            else
+            {
+                Console.WriteLine("User già esistente, errore nell'aggiunta");
+                return null;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            // Gestisci l'eccezione o registra il messaggio di errore, ad esempio:
+            Console.WriteLine("Errore durante l'aggiunta dell'User al database: " + ex.Message);
+            throw; // Rilancia l'eccezione per la gestione superiore
+        }
+    }
+
+    // Metodo per aggiornare un User esistente
+    public User UpdateUser(User user)
+    {
+
+
+        try
+        {
+            // Ottieni la Bike dal database in base all'ID
+            var existingUser = context.Users.Single(x => x.Id == user.Id);
+
+            existingUser.Name = user.Name;
+            existingUser.Email = user.Email;
+            existingUser.Password = user.Password;
+            existingUser.License = user.License;
+
+            // Salva le modifiche nel database
+            context.SaveChanges();
+
+            Console.WriteLine("User aggiornato con successo");
+
+            // Restituisci l'oggetto aggiornato
+            return existingUser;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Errore durante l'aggiornamento del cliente: " + ex.Message);
+            throw; // Puoi gestire l'eccezione in modo diverso se necessario
+        }
+    }
+
+    // Metodo per eliminare una bicicletta
+    public void DeleteUser(int id)
+    {
+        List<Cliente> cliente = new List<Cliente>();
+
+        try
+        {
+            context.Users.Remove(context.Users.Single(x => x.Id == id));
+            context.SaveChanges();
+            Console.WriteLine("User rimosso con successo");
+        }
+        catch
+        {
+            throw;
+        }
+    }
+
+    #endregion
+
     #region Custom Methods
     public List<Stock> GetAllBicycleStocks()
     {

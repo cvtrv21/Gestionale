@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 
 namespace Biciclotti.BusinessLogic.Logics
 {
-    public class ClienteLogic
+    public class UserLogic
     {
-        public void AddClient(Cliente cliente)
+        public void AddUser(User user)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteClient(int id)
+        public void DeleteUser(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Bicycle> GetAllClients()
+        public List<User> GetAllusers()
         {
-            List<Bicycle> bicycles = new List<Bicycle>();
-            Console.WriteLine("GetAllClients");
+            List<User> user = new List<User>();
+            Console.WriteLine("GetAllUsers");
 
             try
             {
@@ -32,20 +32,15 @@ namespace Biciclotti.BusinessLogic.Logics
             catch (Exception ex)
             {
                 // Registra eventuali eccezioni che si verificano durante l'operazione.
-                Console.WriteLine(ex + "Si è verificato un errore durante la chiamata a GetAllClients.");
+                Console.WriteLine(ex + "Si è verificato un errore durante la chiamata a GetAllUsers.");
                 throw; // Rilancia l'eccezione per la gestione futura.
             }
-            return bicycles;
+            return user;
         }
 
-        public void UpdateClient(Bicycle bicycle)
+        public void UpdateUser(User user)
         {
             throw new NotImplementedException();
         }
-
-       /* public void GetOrderCountByClient(int id)
-        {
-            throw new NotImplementedException();
-        }*/
     }
 }

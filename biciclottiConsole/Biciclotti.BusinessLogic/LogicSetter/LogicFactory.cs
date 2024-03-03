@@ -8,13 +8,11 @@ namespace Biciclotti.BusinessLogic
         public IBicycleLogic Bicycle { get; set; }
         public IOrderRowLogic OrderRow { get; set; }
         public IOrderLogic Order { get; set; }
-
         public IStockLogic Stock { get; set; }
-
         public IClienteLogic Cliente { get; set; }
+        public IUserLogic User { get; set; }
 
         public IStartUpLogic StartUp { get; set; }
-
         public bool IsInitialized { get; set; }
 
         #region Public methods

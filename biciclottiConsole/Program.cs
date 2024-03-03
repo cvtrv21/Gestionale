@@ -71,7 +71,7 @@ namespace Biciclotti.Console
 
             LogicFactory.Instance.StartUp.OnStarting();
             
-            System.Console.WriteLine("Controller Started");
+            System.Console.WriteLine("Controller Started!");
 
             //hold the console so it doesn’t run off the end
             while (!_exitSystem)

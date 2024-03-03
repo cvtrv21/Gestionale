@@ -1,5 +1,4 @@
 ﻿using Biciclotti.Models;
-using Biciclotti.Models.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;

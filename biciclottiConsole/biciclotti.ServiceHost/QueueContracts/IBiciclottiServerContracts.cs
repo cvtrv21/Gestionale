@@ -199,8 +199,6 @@ public interface IBiciclottiServerContracts
     /// <param name="id"></param>
     /// <returns>L'oggetto <see cref="Cliente"/> trovato.</returns>
     
-    //[ServerContract("Console", "global.client.getbyid", 1)]
-    //Cliente GetClient(int id);
 
     /// <summary>
     /// Riceve la chiamata dal TryCall() di Wpf e aggiorna un cliente sul database.
@@ -219,6 +217,39 @@ public interface IBiciclottiServerContracts
 
     [ServerContract("Console", "global.client.getClientCount", 1)]
     public int GetOrderCountByClient(string clientName);
+    #endregion
+
+    #region User
+    /// <summary>
+    /// Riceve la chiamata dal TryCall() di Wpf e prende la lista degli user.
+    /// </summary>
+    /// <returns>Una lista di <seealso cref="User"/></returns>
+    [ServerContract("Console", "global.user.all", 1)]
+    List<User> GetAllUsers();
+
+    /// <summary>
+    /// Riceve la chiamata dal TryCall() di Wpf e aggiunge un User al database.
+    /// </summary>
+    /// <param name="user"></param>
+    /// <returns>L'oggetto <seealso cref="User"/> appena aggiunto.</returns>
+    [ServerContract("Console", "global.user.add", 1)]
+    User AddUser(User user);
+
+    /// <summary>
+    /// Riceve la chiamata dal TryCall() di Wpf e aggiorna un User sul database.
+    /// </summary>
+    /// <param name="user"></param>
+    /// <returns>L'oggetto <see cref="User"/> aggiornato.</returns>
+    [ServerContract("Console", "global.user.update", 1)]
+    User UpdateUser(User user);
+
+    /// <summary>
+    /// Riceve la chiamata dal TryCall() di Wpf e elimina un User partendo dall'id
+    /// </summary>
+    /// <param name="id"></param>
+    [ServerContract("Console", "global.user.delete", 1)]
+    void DeleteUser(int id);
+    
     #endregion
 
     #region Custom Methods
