@@ -42,5 +42,10 @@ namespace Biciclotti.BusinessLogic.Logics
         {
             throw new NotImplementedException();
         }
+
+       /* public void GetOrderCountByClient(int id)
+        {
+            throw new NotImplementedException();
+        }*/
     }
 }

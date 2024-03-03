@@ -23,5 +23,8 @@ namespace Biciclotti.BusinessLogic.Interfaces
 
         // Metodo per eliminare una bicicletta
         void DeleteClient(int id);
+
+        // Metodo che restituisce il numero di ordini effettuati da un cliente
+        //void GetOrderCountByClient(int id);
     }
 }

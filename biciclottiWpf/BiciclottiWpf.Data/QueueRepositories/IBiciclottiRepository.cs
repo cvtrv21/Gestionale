@@ -191,6 +191,8 @@ namespace BiciclottiWpf.Data
         /// <param name="id"></param>
         void DeleteClient(int id);
 
+        int GetOrderCountByClient(string clientName);
+
         #endregion
         #region Custom Methods
         List<Stock> GetAllBicycleStocks();

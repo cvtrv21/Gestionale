@@ -75,18 +75,19 @@
 
     <Grid>
         <!-- TextBlock per visualizzare l'orario -->
-        <Border BorderThickness="3" CornerRadius="4" BorderBrush="#FF8BAFA1" Height="35" Width="200" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 10 100 0" Padding="2" Background="Black">
+        <Border BorderThickness="3" CornerRadius="4" BorderBrush="#FF8BAFA1" Height="35" Width="200" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 80 60 0" Padding="2" Background="Black">
             <TextBlock x:Name="OrologioTextBlock" Foreground="White" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Light"/>
         </Border>
+        <!-- Border contenitore per la scritta fissa e il numero -->
+
         <StackPanel>
-            <TextBlock Text="Gestione Magazzino" HorizontalAlignment="Center" TextDecorations="Underline" Margin="10 10 10 2" FontSize="20" FontFamily="Calibri" FontWeight="Bold"/>
-            <Separator Height="2" Background="#FF80E4AB" Margin="0 10 0 0" />
-            <!-- Spazio vuoto con colore di sfondo -->
-            <Border Height="20" Margin="0" Background="Black" Opacity="0.7"/>
-            <Separator Height="2" Background="#FF80E4AB" Margin="0"/>
+            <Border Height="76" Margin="0" Background="Gray" Opacity="1">
+                <TextBlock Text="Gestione Magazzino" HorizontalAlignment="Center" TextDecorations="Underline" Margin="10 20 10 2" FontSize="20" FontFamily="Calibri" FontWeight="Bold"/>
+            </Border>
+            <Separator Height="1" Background="#FF80E4AB" Margin="0"/>
         </StackPanel>
 
-        <StackPanel Margin="20 50">
+        <StackPanel Margin="20 90">
             <!-- Filtri -->
             <StackPanel Orientation="Horizontal" Margin="50 30 0 0">
                 <TextBlock Text="Filtra per Taglia" Margin="15 0 200 0" FontWeight="Bold"/>
@@ -161,12 +162,13 @@
                 <TextBox x:Name="SumTextBox" TextAlignment="Center" FontSize="17" Width="120" Height="40" VerticalAlignment="Center" IsReadOnly="True" Background="White" BorderBrush="#FFD4D4D4" BorderThickness="2" FontWeight="Bold" />
             </StackPanel>
 
-            <!-- Pulsante per aggiungere una nuova bicicletta -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 20 0 30">
-                <Button Content="Aggiungi" Click="AggiungiGiacenza_Click" Style="{StaticResource RoundedButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,5,0" Width="130" Height="40" Foreground="White" Background="#FF80E4AB"/>
-                <Button Content="Modifica" Click="ModificaGiacenza_Click" Background="Orange" BorderBrush="Orange" Foreground="White" Width="130" Height="40" Margin="0,0,5,0" Style="{StaticResource RoundedButtonStyle}"/>
-                <Button Content="Elimina" Click="EliminaGiacenza_Click" Background="Red" BorderBrush="Red" Foreground="White" Width="130" Height="40" Margin="0,0,5,0" Style="{StaticResource RoundedButtonStyle}"/>
-            </StackPanel>
+           
+        </StackPanel>
+        <!-- Pulsante per aggiungere una nuova bicicletta -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 20 0 100">
+            <Button Content="Aggiungi" Click="AggiungiGiacenza_Click" Style="{StaticResource RoundedButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,5,0" Width="130" Height="40" Foreground="White" Background="#FF80E4AB"/>
+            <Button Content="Modifica" Click="ModificaGiacenza_Click" Background="Orange" BorderBrush="Orange" Foreground="White" Width="130" Height="40" Margin="0,0,5,0" Style="{StaticResource RoundedButtonStyle}"/>
+            <Button Content="Elimina" Click="EliminaGiacenza_Click" Background="Red" BorderBrush="Red" Foreground="White" Width="130" Height="40" Margin="0,0,5,0" Style="{StaticResource RoundedButtonStyle}"/>
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 -2">
             <!-- Spazio vuoto con colore di sfondo -->

@@ -21,5 +21,7 @@ namespace BiciclottiWpf.Models
 
         public string Email { get; set; } = "";
 
+        public int NumeroOrdini { get; set;  }
+
     }
 }

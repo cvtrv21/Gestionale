@@ -28,6 +28,7 @@ namespace BiciclottiWpf
         List<Cliente> clienti = new List<Cliente>();
 
         private DispatcherTimer clockTimer;
+        private DispatcherTimer clientUpdateTimer;
 
         public clientWindow()
         {
@@ -47,6 +48,12 @@ namespace BiciclottiWpf
 
             // Chiamata al metodo per inizializzare l'orologio
             UpdateClock();
+
+            // Inizializza il timer per l'aggiornamento dei clienti ogni 10 secondi
+            clientUpdateTimer = new DispatcherTimer();
+            clientUpdateTimer.Interval = TimeSpan.FromSeconds(3);
+            clientUpdateTimer.Tick += ClientUpdateTimer_Tick;
+            clientUpdateTimer.Start();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -58,6 +65,12 @@ namespace BiciclottiWpf
         {
             // Aggiorna l'orologio ogni secondo
             UpdateClock();
+        }
+
+        private void ClientUpdateTimer_Tick(object sender, EventArgs e)
+        {
+            // Aggiorna la lista dei clienti
+            GetAllClients();
         }
 
         private void dataGridClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -99,17 +112,44 @@ namespace BiciclottiWpf
             }
         }
 
+        /*
         private void GetAllClients()
         {
             try
             {
-                clienti = QueueUnitOfWorks.BiciclottiRepository.GetAllClients();
+                clienti = QueueUnitOfWorks.BiciclottiRepository.GetAllClients();                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }*/
+
+        private void GetAllClients()
+        {
+            try
+            {
+                clienti = QueueUnitOfWorks.BiciclottiRepository.GetAllClients()
+                    .Select(client => new Cliente
+                    {
+                        IdCliente = client.IdCliente,
+                        NomeCliente = client.NomeCliente,
+                        Indirizzo = client.Indirizzo,
+                        Telefono = client.Telefono,
+                        Email = client.Email,
+                        NumeroOrdini = QueueUnitOfWorks.BiciclottiRepository.GetOrderCountByClient(client.NomeCliente)
+                    })
+                    .ToList();
+
+                dataGridClients.ItemsSource = clienti;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+
 
         #region Button Aggiungi-Modifica-Elimina
         private void EliminaCliente_Click(object sender, RoutedEventArgs e)
@@ -199,7 +239,6 @@ namespace BiciclottiWpf
 
             ModificaCliente(nome, indirizzo, telefono, email);
         }
-        #endregion
         private void ModificaCliente(string nome, string indirizzo, string telefono, string email)
         {
             if (dataGridClients.SelectedItem != null)
@@ -234,6 +273,7 @@ namespace BiciclottiWpf
                 MessageBox.Show("Nessun elemento selezionato per la modifica");
             }
         }
+        #endregion
 
         private void dataGridBicycles_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {

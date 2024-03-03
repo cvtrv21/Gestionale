@@ -1,4 +1,5 @@
 ﻿using Biciclotti.Models;
+using Biciclotti.Models.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -60,7 +61,10 @@ namespace Biciclotti.Data
                 .HasForeignKey(o => o.CodiceOrdine);
 
             modelBuilder.Entity<Cliente>()
-                .HasKey(c => c.IdCliente);                
+                .HasKey(c => c.IdCliente);
+
+            modelBuilder.Entity<User>()
+                .HasKey(u => u.Id);
                 
         }
 
@@ -71,6 +75,7 @@ namespace Biciclotti.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Stock> Stocks { get; set; }     
         public DbSet<Cliente> Clienti { get; set; }
+        public DbSet<User> Users { get; set; }
 
         #endregion
     }

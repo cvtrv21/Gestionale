@@ -216,6 +216,9 @@ public interface IBiciclottiServerContracts
     /// <param name="id"></param>
     [ServerContract("Console", "global.client.delete", 1)]
     void DeleteClient(int id);
+
+    [ServerContract("Console", "global.client.getClientCount", 1)]
+    public int GetOrderCountByClient(string clientName);
     #endregion
 
     #region Custom Methods

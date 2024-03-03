@@ -33,6 +33,8 @@ namespace BiciclottiWpf
 
         private DispatcherTimer clockTimer;
 
+        private DispatcherTimer clienteTopTimer;
+
         private int _numeroOrdiniDaEvadere;
 
         public int NumeroOrdiniDaEvadere
@@ -41,6 +43,19 @@ namespace BiciclottiWpf
             set
             {
                 _numeroOrdiniDaEvadere = value;
+                // Aggiorna l'interfaccia utente o esegui altre azioni necessarie quando il valore cambia
+                // Ad esempio, puoi aggiornare un TextBlock o eseguire altre operazioni in base al valore
+            }
+        }
+
+        private int _numeroOrdiniScaduti;
+
+        public int NumeroOrdiniScaduti
+        {
+            get { return _numeroOrdiniScaduti; }
+            set
+            {
+                _numeroOrdiniScaduti = value;
                 // Aggiorna l'interfaccia utente o esegui altre azioni necessarie quando il valore cambia
                 // Ad esempio, puoi aggiornare un TextBlock o eseguire altre operazioni in base al valore
             }
@@ -108,6 +123,26 @@ namespace BiciclottiWpf
             UpdateClock();
             #endregion
 
+            #region Timer Cliente TOP
+            // Inizializza il timer per l'orologio
+            clockTimer = new DispatcherTimer();
+            clockTimer.Interval = TimeSpan.FromSeconds(3); // Aggiorna ogni secondo
+            clockTimer.Tick += ClienteTopTimer_Tick; // Aggiungi un gestore per l'evento Tick del timer
+            clockTimer.Start(); // Avvia il timer
+
+            AggiornaTopCliente();
+            #endregion
+
+            #region Ordini Scaduti
+            // Inizializza il timer per l'orologio
+            clockTimer = new DispatcherTimer();
+            clockTimer.Interval = TimeSpan.FromSeconds(3); // Aggiorna ogni secondo
+            clockTimer.Tick += OrdiniScadutiTimer_Tick; // Aggiungi un gestore per l'evento Tick del timer
+            clockTimer.Start(); // Avvia il timer
+
+            AggiornaNumeroOrdiniScaduti();
+            #endregion
+
         }
 
         #region metodi Timer Tick
@@ -139,6 +174,16 @@ namespace BiciclottiWpf
         private void OrdiniDaEvadereTimer_Tick(object sender, EventArgs e)
         {
             AggiornaNumeroOrdiniDaEvadere();
+        }
+
+        private void ClienteTopTimer_Tick(object sender, EventArgs e)
+        {
+            AggiornaTopCliente();
+        }
+
+        private void OrdiniScadutiTimer_Tick(object sender, EventArgs e)
+        {
+            AggiornaNumeroOrdiniScaduti();
         }
         #endregion
 
@@ -531,9 +576,10 @@ namespace BiciclottiWpf
         #endregion
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.Shutdown();
         }
 
+        #region Viste Dashboard
         private void AggiornaNumeroOrdiniDaEvadere()
         {
             // Ottieni la data di oggi
@@ -551,11 +597,45 @@ namespace BiciclottiWpf
             NumeroOrdiniDaEvadere = numeroOrdiniNonEvasi;
 
             NumeroOrdiniDaEvadereTextBlock.Text = numeroOrdiniNonEvasi.ToString();
-
-
         }
 
-       
+        private void AggiornaNumeroOrdiniScaduti()
+        {
+            // Ottieni la data di oggi
+            DateTime oggi = DateTime.Today;
+
+            // Filtra gli ordini in base alla data di consegna e allo stato "Nuovo" per i giorni precedenti
+            int numeroOrdiniFiltrati = QueueUnitOfWorks.BiciclottiRepository.GetAllOrderStocks()
+                .Count(order => order.order.StatoOrdine == "Nuovo" && Convert.ToDateTime(order.order.DataConsegna) < oggi);
+
+            // Aggiorna la proprietà NumeroOrdiniDaEvadere
+            NumeroOrdiniScaduti = numeroOrdiniFiltrati;
+
+            // Visualizza il numero nella TextBox
+            NumeroOrdiniScadutiTextBlock.Text = numeroOrdiniFiltrati.ToString();
+        }
+
+
+        private void AggiornaTopCliente()
+        {
+            Cliente clienteTop = GetClienteConPiuOrdini();
+
+            TopClienteTextBox.Text = clienteTop.NomeCliente;
+        }
+
+        private Cliente GetClienteConPiuOrdini()
+        {
+            // Ottieni la lista di tutti i clienti
+            List<Cliente> clienti = QueueUnitOfWorks.BiciclottiRepository.GetAllClients();
+
+            // Trova il cliente con il massimo numero di ordini
+            Cliente clienteConPiuOrdini = clienti.OrderByDescending(cliente => QueueUnitOfWorks.BiciclottiRepository.GetOrderCountByClient(cliente.NomeCliente)).FirstOrDefault();
+
+            return clienteConPiuOrdini;
+        }
+        #endregion
+
+
     }
 
 }

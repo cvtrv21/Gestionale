@@ -215,6 +215,9 @@ namespace BiciclottiWpf.Data
         /// <param name="id"></param>
         [ClientContract("Console", "global.client.delete", 1)]
         void DeleteClient(int id);
+
+        [ClientContract("Console", "global.client.getClientCount", 1)]
+        public int GetOrderCountByClient(string clientName);
         #endregion
 
         #region Custom Methods

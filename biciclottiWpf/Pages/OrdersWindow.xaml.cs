@@ -49,6 +49,7 @@ namespace BiciclottiWpf
 
             // Chiamata al metodo per inizializzare l'orologio
             UpdateClock();
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -56,8 +57,10 @@ namespace BiciclottiWpf
             //OrdiniListView.ItemsSource = orderList;
 
             orderList.Reverse();
-
             OrdiniListView.ItemsSource = orderList;
+
+            StatoComboBox.SelectedIndex = 1;
+            FiltraOrdini_Click(null, null);
         }
 
         private void ClockTimer_Tick(object sender, EventArgs e)

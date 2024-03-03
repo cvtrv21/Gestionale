@@ -381,6 +381,35 @@ namespace BiciclottiWpf.Data
             }
         }
 
+        public int GetOrderCountByClient(string clientName)
+        {           
+            try
+            {
+                var resultTask = Client.TryCallAsync(server => server.GetOrderCountByClient(clientName), ExceptionManagements.RethrowException);
+
+                resultTask.Wait();
+
+                var result = resultTask.Result;
+                
+                
+                if(result.Success)
+                {
+                    return result.Data;
+                }
+                else
+                {
+                    // Puoi gestire l'errore qui se necessario
+                    Console.WriteLine("Errore durante la chiamata CountClient");
+                }
+            }
+            catch 
+            { 
+            }
+
+            return 0;
+            
+        }
+
         #endregion
 
 

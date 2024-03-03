@@ -587,6 +587,23 @@ public class BiciclottiHandlers : IBiciclottiServerContracts
         }
     }
 
+    public int GetOrderCountByClient(string clientName)
+    {
+        try
+        {
+            int orderCount = context.Orders
+                .Join(context.Clienti, order => order.NomeCliente, client => client.NomeCliente, (order, client) => new { order, client })
+                .Where(x => x.client.NomeCliente == clientName)
+                .Count();
+
+            return orderCount;
+        }
+        catch
+        {
+            throw;
+        }
+    }
+
     #endregion
 
     #region Custom Methods
