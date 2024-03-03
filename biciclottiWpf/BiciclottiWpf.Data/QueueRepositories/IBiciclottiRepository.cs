@@ -194,6 +194,36 @@ namespace BiciclottiWpf.Data
         int GetOrderCountByClient(string clientName);
 
         #endregion
+
+        #region User
+
+        /// <summary>
+        /// Sfrutta FrameQueue per prendere la lista degli user.
+        /// </summary>
+        /// <returns>Una lista di <seealso cref="User"/></returns>
+        List<User> GetAllUsers();
+
+        /// <summary>
+        /// Sfrutta FrameQueue per aggiungere un User al database.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>L'oggetto <seealso cref="User"/> appena aggiunto.</returns>
+        User AddUser(User user);
+
+        /// <summary>
+        /// Sfrutta FrameQueue per aggiornare un User sul database.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>L'oggetto <see cref="Cliente"/> aggiornato.</returns>
+        User UpdateUser(User user);
+
+        /// <summary>
+        /// Sfrutta FrameQueue per eliminare uno order partendo dall'id
+        /// </summary>
+        /// <param name="id"></param>
+        void DeleteUser(int id);
+        #endregion
+
         #region Custom Methods
         List<Stock> GetAllBicycleStocks();
 

@@ -412,6 +412,73 @@ namespace BiciclottiWpf.Data
 
         #endregion
 
+        #region User
+
+        /// <summary>
+        /// Sfrutta FrameQueue per prendere la lista di tutti i clienti.
+        /// </summary>
+        /// <returns>Una lista di <seealso cref="Bicycle"/></returns>
+        public List<User> GetAllUsers()
+        {
+            List<User> user = new List<User>();
+            try
+            {
+                user = Client.TryCallSync(server => server.GetAllUsers(), ExceptionManagements.RethrowException).Data;
+            }
+            catch { }
+
+            return user;
+        }
+
+        /// <summary>
+        /// Sfrutta FrameQueue per aggiungere un user al database.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>L'oggetto <seealso cref="User"/> appena aggiunto.</returns>
+        public User AddUser(User user)
+        {
+            User users = new User();
+            try
+            {
+                users = Client.TryCallSync(server => server.AddUser(user), ExceptionManagements.RethrowException).Data;
+            }
+            catch { }
+
+            return users;
+        }
+
+        /// <summary>
+        /// Sfrutta FrameQueue per aggiornare un user sul database.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>L'oggetto <see cref="User"/> aggiornato.</returns>
+        public User UpdateUser(User user)
+        {
+            try
+            {
+                Client.TryCallSync(server => server.UpdateUser(user), ExceptionManagements.RethrowException);
+            }
+            catch { }
+
+            return user;
+        }
+
+        /// <summary>
+        /// Sfrutta FrameQueue per eliminare un user partendo dall'id
+        /// </summary>
+        /// <param name="id"></param>
+        public void DeleteUser(int id)
+        {
+            try
+            {
+                Client.TryCallSync(server => server.DeleteUser(id), ExceptionManagements.RethrowException);
+            }
+            catch
+            {
+            }
+        }
+
+        #endregion
 
 
         #region Metodi Custom
