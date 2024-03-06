@@ -9,9 +9,9 @@
     <Window.Resources>
         <!-- Definisci uno stile per i pulsanti -->
         <Style x:Key="RoundedButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="BorderBrush" Value="#FF8BAFA1"/>
+            <Setter Property="Background" Value="#FF1E223C"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="BorderBrush" Value="LightSkyBlue"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Margin" Value="0"/>
             <Setter Property="Padding" Value="10 5"/>
@@ -36,50 +36,33 @@
                 </Trigger>
                 <!-- Stato "MouseOver" (sopra con il mouse) -->
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FF80E4AB"/>
+                    <Setter Property="Background" Value="LightSkyBlue"/>
                     <!-- Cambia il colore di sfondo quando il mouse è sopra -->
                     <Setter Property="Foreground" Value="White"/>
                     <!-- Cambia il colore del testo quando il mouse è sopra -->
-                    <Setter Property="BorderBrush" Value="#008000"/>
+                    <Setter Property="BorderBrush" Value="LightSkyBlue"/>
                     <!-- Cambia il colore del bordo quando il mouse è sopra -->
                 </Trigger>
             </Style.Triggers>
-        </Style>
-
-       
+        </Style>       
 
         <!-- Stile per il Border che avvolge il DataGrid -->
         <Style x:Key="DataGridBorderStyle" TargetType="Border">
             <Setter Property="CornerRadius" Value="10"/>
-            <Setter Property="BorderBrush" Value="#FF8BAFA1"/>
+            <Setter Property="BorderBrush" Value="#FF1E223C"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="Margin" Value="20"/>
-        </Style>
-
-        <!-- Aggiungi questo stile per gli Header delle colonne del DataGrid -->
-        <Style x:Key="DataGridHeaderStyle" TargetType="DataGridColumnHeader">
-            <Setter Property="Background" Value="#FF80E4AB"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Padding" Value="5,0"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-        </Style>
-
-        <Style x:Key="ChartBorderStyle" TargetType="Border">
-            <Setter Property="BorderBrush" Value="#FF8BAFA1"/>
-            <Setter Property="BorderThickness" Value="10"/>
-            <Setter Property="Margin" Value="20"/>
-            <Setter Property="CornerRadius" Value="0"/>
         </Style>
     </Window.Resources>
 
     <Grid Background="WhiteSmoke">
-         <StackPanel>            
-            <Border Height="76" Margin="0" Background="Gray" Opacity="1"/>
-            <Separator Height="1" Background="#FF80E4AB" Margin="0"/>
+         <StackPanel>
+            <Border Height="76" Margin="0" Background="#FF1E223C" Opacity="1"/>
+            <Separator Height="1" Background="LightSkyBlue" Margin="0"/>
         </StackPanel>
 
         <!-- Barra Laterale -->
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 77 0 0" Background="LightGray" BorderBrush="#FF8BAFA1" BorderThickness="1 0" CornerRadius="0" Padding="8" Width="250" Height="915"/>
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 77 0 0" Background="#FF1E223C" BorderBrush="#FF1E223C" BorderThickness="1 0" CornerRadius="0" Padding="8" Width="250" Height="915"/>
 
 
 
@@ -87,8 +70,8 @@
         <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="650" Height="450">
             <StackPanel>
                 <!-- Title -->
-                <Border Height="50" Margin="0" Background="Gray" Opacity="1" CornerRadius="10 10 0 0">
-                    <TextBlock Text="Login" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" TextDecorations="Underline" FontSize="20" FontFamily="Calibri"/>
+                <Border Height="50" Margin="0" Background="#FF1E223C" Opacity="1" CornerRadius="10 10 0 0">
+                    <TextBlock Text="Login" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" TextDecorations="Underline" FontSize="20" FontFamily="Calibri" Foreground="LightGray"/>
                 </Border>
 
                 <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="70">

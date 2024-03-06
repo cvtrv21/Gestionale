@@ -56,7 +56,7 @@ namespace BiciclottiWpf.Pages
                 //this.Close();
 
                 // Puoi aprire la finestra principale o eseguire altre azioni post accesso qui
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new MainWindow(username);
                 mainWindow.Show();
 
                 //this.Visibility = Visibility.Hidden;

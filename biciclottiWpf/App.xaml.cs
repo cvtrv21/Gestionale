@@ -28,7 +28,7 @@ namespace BiciclottiWpf
             // Verifica se l'utente ha effettuato l'accesso prima di aprire la finestra principale
             if (loginForm.DialogResult.HasValue && loginForm.DialogResult.Value)
             {
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new MainWindow("NomeUtente");
                 mainWindow.Show();
             }
             else

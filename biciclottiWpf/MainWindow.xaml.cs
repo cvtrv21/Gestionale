@@ -14,6 +14,7 @@ using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Threading;
+using System.ComponentModel;
 
 
 namespace BiciclottiWpf
@@ -21,7 +22,7 @@ namespace BiciclottiWpf
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private DispatcherTimer timer;
 
@@ -61,12 +62,30 @@ namespace BiciclottiWpf
             }
         }
 
+        private string currentUserName;
+
+        public string CurrentUserName
+        {
+            get { return currentUserName; }
+            set
+            {
+                if (currentUserName != value)
+                {
+                    currentUserName = value;
+                    OnPropertyChanged(nameof(CurrentUserName));
+                }
+            }
+        }
+
         public ChartValues<float> QuantitaValues { get; set; } 
         public ChartValues<float> ProfittoValues { get; set; }
 
-        public MainWindow()
-        {
+        public MainWindow(string username)
+        { 
             InitializeComponent();
+
+            CurrentUserName = username;
+            CurrentUserTextBox.Text = username;
 
             // Inizializza le ChartValues per le colonne Quantità e Profitto
             QuantitaValues = new ChartValues<float>();
@@ -342,7 +361,78 @@ namespace BiciclottiWpf
             storicoOrdiniWindow.Show();
 
         }
+        private void OpenUserWindow_Click(object sender, RoutedEventArgs e)
+        {
+            UserForm userWindow = new UserForm();
+
+            userWindow.Show();
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         #endregion
+
+        #region Viste Dashboard
+        private void AggiornaNumeroOrdiniDaEvadere()
+        {
+            // Ottieni la data di oggi
+            DateTime oggi = DateTime.Today;
+
+            // Ottieni gli ordini non ancora evasi in stato "Nuovo" dei prossimi 7 giorni
+            List<OrderRow> ordiniNonEvasi = QueueUnitOfWorks.BiciclottiRepository.GetAllOrderStocks()
+                .Where(order => order.order.StatoOrdine == "Nuovo" && DateTime.Parse(order.order.DataConsegna) >= oggi && DateTime.Parse(order.order.DataConsegna) <= oggi.AddDays(7))
+                .ToList();
+
+            // Conta il numero di ordini non ancora evasi
+            int numeroOrdiniNonEvasi = ordiniNonEvasi.Count;
+
+            // Aggiorna la proprietà NumeroOrdiniDaEvadere
+            NumeroOrdiniDaEvadere = numeroOrdiniNonEvasi;
+
+            NumeroOrdiniDaEvadereTextBlock.Text = numeroOrdiniNonEvasi.ToString();
+        }
+
+        private void AggiornaNumeroOrdiniScaduti()
+        {
+            // Ottieni la data di oggi
+            DateTime oggi = DateTime.Today;
+
+            // Filtra gli ordini in base alla data di consegna e allo stato "Nuovo" per i giorni precedenti
+            int numeroOrdiniFiltrati = QueueUnitOfWorks.BiciclottiRepository.GetAllOrderStocks()
+                .Count(order => order.order.StatoOrdine == "Nuovo" && Convert.ToDateTime(order.order.DataConsegna) < oggi);
+
+            // Aggiorna la proprietà NumeroOrdiniDaEvadere
+            NumeroOrdiniScaduti = numeroOrdiniFiltrati;
+
+            // Visualizza il numero nella TextBox
+            NumeroOrdiniScadutiTextBlock.Text = numeroOrdiniFiltrati.ToString();
+        }
+
+
+        private void AggiornaTopCliente()
+        {
+            Cliente clienteTop = GetClienteConPiuOrdini();
+
+            TopClienteTextBox.Text = clienteTop.NomeCliente;
+        }
+
+        private Cliente GetClienteConPiuOrdini()
+        {
+            // Ottieni la lista di tutti i clienti
+            List<Cliente> clienti = QueueUnitOfWorks.BiciclottiRepository.GetAllClients();
+
+            // Trova il cliente con il massimo numero di ordini
+            Cliente clienteConPiuOrdini = clienti.OrderByDescending(cliente => QueueUnitOfWorks.BiciclottiRepository.GetOrderCountByClient(cliente.NomeCliente)).FirstOrDefault();
+
+            return clienteConPiuOrdini;
+        }
+
+        #endregion
+
+        
 
         #region Barcode
         private void SimulateBarcodeRead_Click(object sender, RoutedEventArgs e)
@@ -574,68 +664,13 @@ namespace BiciclottiWpf
         }
 
         #endregion
-        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
         {
-            this.Close();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        #region Viste Dashboard
-        private void AggiornaNumeroOrdiniDaEvadere()
-        {
-            // Ottieni la data di oggi
-            DateTime oggi = DateTime.Today;
-
-            // Ottieni gli ordini non ancora evasi in stato "Nuovo" dei prossimi 7 giorni
-            List<OrderRow> ordiniNonEvasi = QueueUnitOfWorks.BiciclottiRepository.GetAllOrderStocks()
-                .Where(order => order.order.StatoOrdine == "Nuovo" && DateTime.Parse(order.order.DataConsegna) >= oggi && DateTime.Parse(order.order.DataConsegna) <= oggi.AddDays(7))
-                .ToList();
-
-            // Conta il numero di ordini non ancora evasi
-            int numeroOrdiniNonEvasi = ordiniNonEvasi.Count;
-
-            // Aggiorna la proprietà NumeroOrdiniDaEvadere
-            NumeroOrdiniDaEvadere = numeroOrdiniNonEvasi;
-
-            NumeroOrdiniDaEvadereTextBlock.Text = numeroOrdiniNonEvasi.ToString();
-        }
-
-        private void AggiornaNumeroOrdiniScaduti()
-        {
-            // Ottieni la data di oggi
-            DateTime oggi = DateTime.Today;
-
-            // Filtra gli ordini in base alla data di consegna e allo stato "Nuovo" per i giorni precedenti
-            int numeroOrdiniFiltrati = QueueUnitOfWorks.BiciclottiRepository.GetAllOrderStocks()
-                .Count(order => order.order.StatoOrdine == "Nuovo" && Convert.ToDateTime(order.order.DataConsegna) < oggi);
-
-            // Aggiorna la proprietà NumeroOrdiniDaEvadere
-            NumeroOrdiniScaduti = numeroOrdiniFiltrati;
-
-            // Visualizza il numero nella TextBox
-            NumeroOrdiniScadutiTextBlock.Text = numeroOrdiniFiltrati.ToString();
-        }
-
-
-        private void AggiornaTopCliente()
-        {
-            Cliente clienteTop = GetClienteConPiuOrdini();
-
-            TopClienteTextBox.Text = clienteTop.NomeCliente;
-        }
-
-        private Cliente GetClienteConPiuOrdini()
-        {
-            // Ottieni la lista di tutti i clienti
-            List<Cliente> clienti = QueueUnitOfWorks.BiciclottiRepository.GetAllClients();
-
-            // Trova il cliente con il massimo numero di ordini
-            Cliente clienteConPiuOrdini = clienti.OrderByDescending(cliente => QueueUnitOfWorks.BiciclottiRepository.GetOrderCountByClient(cliente.NomeCliente)).FirstOrDefault();
-
-            return clienteConPiuOrdini;
-        }
-        #endregion
-
-
     }
 
 }
