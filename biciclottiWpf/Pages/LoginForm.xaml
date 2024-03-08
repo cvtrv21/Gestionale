@@ -45,18 +45,13 @@
                 </Trigger>
             </Style.Triggers>
         </Style>       
-
-        <!-- Stile per il Border che avvolge il DataGrid -->
-        <Style x:Key="DataGridBorderStyle" TargetType="Border">
-            <Setter Property="CornerRadius" Value="10"/>
-            <Setter Property="BorderBrush" Value="#FF1E223C"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="Margin" Value="20"/>
-        </Style>
     </Window.Resources>
 
-    <Grid Background="WhiteSmoke">
-         <StackPanel>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/2.jpg"/>
+        </Grid.Background>
+        <StackPanel>
             <Border Height="76" Margin="0" Background="#FF1E223C" Opacity="1"/>
             <Separator Height="1" Background="LightSkyBlue" Margin="0"/>
         </StackPanel>
@@ -71,9 +66,9 @@
             <StackPanel>
                 <!-- Title -->
                 <Border Height="50" Margin="0" Background="#FF1E223C" Opacity="1" CornerRadius="10 10 0 0">
-                    <TextBlock Text="Login" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" TextDecorations="Underline" FontSize="20" FontFamily="Calibri" Foreground="LightGray"/>
-                </Border>
-
+                    <TextBlock Text="Login" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" TextDecorations="Underline" FontSize="20" FontFamily="Calibri" Foreground="LightGray"/>                   
+                </Border>               
+                
                 <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="70">
                     <TextBlock Text="Username:" Margin="30 0 0 0"/>
                     <TextBox x:Name="UsernameTextBox"  GotFocus="OnTextBoxGotFocus" LostFocus="OnTextBoxLostFocus" Margin="30 10 30 0" Width="220" Height="30" FontSize="14"/>

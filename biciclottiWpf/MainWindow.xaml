@@ -102,26 +102,32 @@
         </Style>
     </Window.Resources>
 
-    
-    <Grid Background="WhiteSmoke">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/2.jpg"/>
+        </Grid.Background>
         <StackPanel>
+            <StackPanel.Background>
+                <ImageBrush/>
+            </StackPanel.Background>
             <Border Height="76" Margin="0" Background="#FF1E223C" Opacity="1">
                 <TextBlock Text="Home Page" HorizontalAlignment="Center" TextDecorations="Underline" Margin="10 20 10 2" FontSize="20" FontFamily="Calibri" FontWeight="Bold" Foreground="LightGray"/>
             </Border>
             <Separator Height="1" Background="LightSkyBlue" Margin="0"/>
         </StackPanel>
-        
+
         <!-- TextBlock per visualizzare l'orario -->
-        <Border BorderThickness="3" CornerRadius="4" BorderBrush="#FF8BAFA1" Height="35" Width="200" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 80 60 0" Padding="2" Background="Black">
+        <Border BorderThickness="1" CornerRadius="4" BorderBrush="DarkOrange" Height="35" Width="200" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 80 60 0" Padding="2" Background="Black">
             <TextBlock x:Name="OrologioTextBlock" Foreground="White" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Light"/>
         </Border>
-        
+
         <!-- Visualizzazione Utente-->
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 77 10 0" Background="#FF1E223C" BorderBrush="#FF1E223C" BorderThickness="1" CornerRadius="0" Padding="8" Width="250" Height="60">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 76.2 10 0" Background="#FF1E223C" BorderBrush="#FF1E223C" BorderThickness="1" CornerRadius="0" Padding="8" Width="250" Height="60">
             <!-- StackPanel per posizionare orizzontalmente la scritta e il numero -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30 0 0 0">
                 <!-- Scritta fissa -->
-                <Image Source="Images/user.png" Width="30" Height="25" Margin="-10 0 25 0"/>
+                <Image Source="Images/user.png" Width="40" Height="40" Margin="-10 0 25 0"/>
                 <TextBlock x:Name="CurrentUserTextBox" Foreground="LightGray" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
             </StackPanel>
         </Border>
@@ -129,7 +135,7 @@
         <!-- StackPanel principale -->
         <StackPanel Margin="0 20 20 20">
             <!-- StackPanel orizzontale per i pulsanti -->
-            
+
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 40 0 0" >
                 <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 77 0 0" Background="Gray" BorderBrush="#FF1E223C" BorderThickness="0 0.3" CornerRadius="0" Padding="8" Width="250" Height="40">
                     <!-- StackPanel per posizionare orizzontalmente la scritta e il numero -->
@@ -148,7 +154,7 @@
                 <!-- Sezione 1: Anagrafica Bici -->
                 <Button Click="OpenBicycleWindow_Click" Style="{StaticResource RoundedButtonStyle}" BorderThickness="1 0.3 ">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Images/bike_23739.png" Width="40" Height="35" Margin="-10 0 5 0"/>
+                        <Image Source="/Images/stand.png" Width="40" Height="35" Margin="-10 0 5 0"/>
                         <TextBlock Text="Anagrafica Articoli" FontWeight="Medium" Margin="10" FontSize="15" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
@@ -175,28 +181,28 @@
                 <!-- Sezione 4: Gestione Clienti -->
                 <Button Click="OpenClientWindow_Click" Style="{StaticResource RoundedButtonStyle}" BorderThickness="1 0.5">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/customer.png" Width="40" Height="35" Margin="-30 0 5 0"/>
+                        <Image Source="Images/customer.png" Width="40" Height="35" Margin="-30 0 10 0"/>
                         <TextBlock Text=" Gestione Clienti" FontWeight="Medium" Margin="0" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
                 <!-- Sezione 5: Gestione Fatture -->
                 <Button Click="OpenClientWindow_Click" Style="{StaticResource RoundedButtonStyle}" BorderThickness="1 0.5">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/quotation.png" Width="40" Height="40" Margin="-100 0 5 0"/>
+                        <Image Source="Images/contract.png" Width="40" Height="40" Margin="-100 0 5 0"/>
                         <TextBlock Text="Fatture" FontWeight="Medium" Margin="0" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
                 <!-- Sezione 6: Storico Ordini -->
                 <Button Click="OpenStoricoOrdiniWindow_Click" Style="{StaticResource RoundedButtonStyle}" BorderThickness="1 0.5">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/historyOrder.png" Width="40" Height="40" Margin="-60 0 5 0"/>
+                        <Image Source="Images/clock.png" Width="40" Height="40" Margin="-60 0 5 0"/>
                         <TextBlock Text="Storico Ordini" FontWeight="Medium" Margin="0" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
                 <!-- Sezione 7: Storico Fatture -->
                 <Button Click="OpenClientWindow_Click" Style="{StaticResource RoundedButtonStyle}" BorderThickness="1 0.5">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/file.png" Width="35" Height="35" Margin="-60 0 5 0"/>
+                        <Image Source="Images/file2.png" Width="35" Height="35" Margin="-50 0 5 0"/>
                         <TextBlock Text="Storico Fatture" FontWeight="Medium" Margin="0" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
@@ -210,7 +216,7 @@
                 <!-- Sezione 8: Account -->
                 <Button Click="OpenUserWindow_Click" Style="{StaticResource RoundedButtonStyle}" BorderThickness="1 0.5">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/account.png" Width="30" Height="35" Margin="-100 0 0 0"/>
+                        <Image Source="Images/user.png" Width="30" Height="35" Margin="-100 0 0 0"/>
                         <TextBlock Text="Account" FontWeight="Medium" Margin="0" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
@@ -233,18 +239,18 @@
 
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20 -1280 0 0">
                 <!-- Aggiungi una TextBox per inserire il barcode -->
-                
+
                 <TextBlock Text="CodiceOrdine||Taglia||Quantità" Width="160" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20 -200 0 0" FontWeight="Medium"/>
                 <TextBox x:Name="BarcodeTextBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Height="35" Margin="20 -185 0 0" FontSize="19" FontWeight="Bold" TextAlignment="Center" BorderThickness="2" BorderBrush="#FF1E223C"/>
                 <Button Content="Scan Barcode" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource RoundedButtonStyle}" Width="150" Height="30" Margin="20 -145 0 0" Click="SimulateBarcodeRead_Click" FontWeight="Medium"/>
-                
+
             </StackPanel>
 
 
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal">
                 <StackPanel>
                     <!-- Border contenitore per la scritta fissa e il numero -->
-                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180 -1330 0 0" Background="#FF1E223C" BorderBrush="#FF8BAFA1" BorderThickness="4" CornerRadius="10" Padding="4" Width="250" Height="90">
+                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180 -1330 0 0" Background="#FF1E223C" BorderBrush="DarkOrange" BorderThickness="3" CornerRadius="10" Padding="4" Width="250" Height="90">
                         <Border.ToolTip>
                             <ToolTip Content="Vai in Gestione Ordini per controllare" Placement="Bottom" HorizontalOffset="20" VerticalOffset="10"/>
                         </Border.ToolTip>
@@ -266,8 +272,8 @@
                 </StackPanel>
 
                 <StackPanel>
-                    <!-- Border contenitore per la scritta fissa e il numero -->
-                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 -1330 0 0" Background="#FF1E223C" BorderBrush="#FF8BAFA1" BorderThickness="4" CornerRadius="10" Padding="4" Width="250" Height="90">
+                    <!-- Border ORDINI EVASI -->
+                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 -1330 0 0" Background="#FF1E223C" BorderBrush="DarkOrange" BorderThickness="3" CornerRadius="10" Padding="4" Width="250" Height="90">
                         <Border.ToolTip>
                             <ToolTip Content="Vai in Gestione Ordini per controllare" Placement="Bottom" HorizontalOffset="20" VerticalOffset="10"/>
                         </Border.ToolTip>
@@ -289,8 +295,8 @@
                 </StackPanel>
 
                 <StackPanel>
-                    <!-- Border contenitore per la scritta fissa e il numero -->
-                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 -1330 0 0" Background="#FF1E223C" BorderBrush="#FF8BAFA1" BorderThickness="4" CornerRadius="10" Padding="4" Width="250" Height="90">
+                    <!-- Border Incasso Totale -->
+                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 -1330 0 0" Background="#FF1E223C" BorderBrush="DarkOrange" BorderThickness="3" CornerRadius="10" Padding="4" Width="250" Height="90">
                         <!-- StackPanel per posizionare orizzontalmente la scritta e il numero -->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="Images/money-bag.png" Width="40" Height="40" Margin="0 0 10 0" VerticalAlignment="Center"/>
@@ -307,8 +313,8 @@
                     </Border>
                 </StackPanel>
                 <StackPanel>
-                    <!-- Border contenitore per la scritta fissa e il numero -->
-                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 -1330 0 0" Background="#FF1E223C" BorderBrush="#FF8BAFA1" BorderThickness="4" CornerRadius="10" Padding="4" Width="250" Height="90">
+                    <!-- Border TOP CLIENTE -->
+                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 -1330 0 0" Background="#FF1E223C" BorderBrush="DarkOrange" BorderThickness="3" CornerRadius="10" Padding="4" Width="250" Height="90">
                         <!-- StackPanel per posizionare orizzontalmente la scritta e il numero -->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="Images/TopCustomer.png" Width="40" Height="35" Margin="0 0 10 0" VerticalAlignment="Center"/>
@@ -324,8 +330,8 @@
                     </Border>
                 </StackPanel>
                 <StackPanel>
-                    <!-- Border contenitore per la scritta fissa e il numero -->
-                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 -1330 0 0" Background="#FF1E223C" BorderBrush="#FF8BAFA1" BorderThickness="4" CornerRadius="10" Padding="4" Width="250" Height="90">
+                    <!-- Border Ordini Scaduti -->
+                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 -1330 0 0" Background="#FF1E223C" BorderBrush="DarkOrange" BorderThickness="3" CornerRadius="10" Padding="4" Width="250" Height="90">
                         <!-- StackPanel per posizionare orizzontalmente la scritta e il numero -->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="Images/cancel.png" Width="40" Height="35" Margin="0 0 10 0" VerticalAlignment="Center"/>
@@ -360,7 +366,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Profitto, StringFormat='{}{0:N} €'}"/>                                        
+                                            <TextBlock Text="{Binding Profitto, StringFormat='{}{0:N} €'}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -374,9 +380,9 @@
                                 <GradientStop Color="#FF1E223C"/>
                             </LinearGradientBrush>
                         </DataGrid.BorderBrush>
-                    </DataGrid>                
+                    </DataGrid>
 
-                
+
                     <!-- Legenda -->
                     <Border HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,-110,0" Height="50" Width="750" BorderBrush="#4CB7DAB4">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -433,20 +439,20 @@
                     </TextBlock>
                 </StackPanel>
             </StackPanel>
-            
+
 
             <!-- Sezione 4: Memo in tempo reale -->
             <DockPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10 -810 250 0">
                 <TextBlock Text="Messaggi in Tempo Reale:" FontWeight="Bold" DockPanel.Dock="Top" FontSize="15"/>
-                <RichTextBox x:Name="RealTimeMemo" IsReadOnly="True" Height="200" Width="1200" BorderBrush="#FF8BAFA1" BorderThickness="2" Opacity="1" FontWeight="Bold" FontSize="15" Background="Black"/>                
-            </DockPanel>           
+                <RichTextBox x:Name="RealTimeMemo" IsReadOnly="True" Height="200" Width="1200" BorderBrush="DarkOrange" BorderThickness="2" Opacity="1" FontWeight="Bold" FontSize="15" Background="Black"/>
+            </DockPanel>
         </StackPanel>
-        
+
         <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 -2">
             <!-- Spazio vuoto con colore di sfondo -->
             <Border Height="20" Margin="0" Background="Black" Opacity="0.7">
                 <TextBlock Text="© 2024 Development By: CTR Software. Tutti i diritti riservati." Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
         </StackPanel>
-    </Grid>    
+    </Grid>
 </Window>

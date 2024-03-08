@@ -52,18 +52,22 @@
     </Window.Resources>
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/2.jpg"/>
+        </Grid.Background>
+        <StackPanel>
+            <Border Height="76" Margin="0" Background="#FF1E223C" Opacity="1">
+                <TextBlock Text="Gestione Ordini" HorizontalAlignment="Center" TextDecorations="Underline" Margin="10 20 10 2" FontSize="20" FontFamily="Calibri" FontWeight="Bold" Foreground="LightGray"/>
+            </Border>
+            <Separator Height="1" Background="LightSkyBlue" Margin="0"/>
+        </StackPanel>
+        
         <!-- TextBlock per visualizzare l'orario -->
         <Border BorderThickness="3" CornerRadius="4" BorderBrush="#FF8BAFA1" Height="35" Width="200" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 80 60 0" Padding="2" Background="Black">
             <TextBlock x:Name="OrologioTextBlock" Foreground="White" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Light"/>
         </Border>
         <!-- Border contenitore per la scritta fissa e il numero -->
 
-        <StackPanel>
-            <Border Height="76" Margin="0" Background="Gray" Opacity="1">
-                <TextBlock Text="Gestione Ordini" HorizontalAlignment="Center" TextDecorations="Underline" Margin="10 20 10 2" FontSize="20" FontFamily="Calibri" FontWeight="Bold"/>
-            </Border>
-            <Separator Height="1" Background="#FF80E4AB" Margin="0"/>
-        </StackPanel>
 
 
         <StackPanel Margin="10 100">
@@ -91,8 +95,10 @@
                         <GridView>
                             <GridView.ColumnHeaderContainerStyle>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Background" Value="#FF80E4AB"/>                                    
-                                <!-- Colore di sfondo verde chiaro per gli header -->
+                                <Setter Property="Background" Value="#FF1E223C"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Foreground" Value="LightGray"/>
+                                <Setter Property="FontSize" Value="14"/>
                                 </Style>
                             </GridView.ColumnHeaderContainerStyle>
                             <GridViewColumn Width="50">

@@ -24,20 +24,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Images\11.jpg" />
+    <None Remove="Images\12.jpg" />
+    <None Remove="Images\2.jpg" />
     <None Remove="Images\7-days.png" />
     <None Remove="Images\account.png" />
     <None Remove="Images\bike_23739.png" />
+    <None Remove="Images\blue.jpg" />
     <None Remove="Images\cancel.png" />
+    <None Remove="Images\clock.png" />
+    <None Remove="Images\contract.png" />
     <None Remove="Images\customer.png" />
     <None Remove="Images\dashboard.png" />
-    <None Remove="Images\delivered.png" />
     <None Remove="Images\file.png" />
-    <None Remove="Images\historyOrder.png" />
+    <None Remove="Images\file2.png" />
+    <None Remove="Images\hand.jpg" />
+    <None Remove="Images\history.png" />
     <None Remove="Images\home.png" />
     <None Remove="Images\logout.png" />
     <None Remove="Images\money-bag.png" />
+    <None Remove="Images\natural.jpg" />
     <None Remove="Images\older.png" />
-    <None Remove="Images\quotation.png" />
+    <None Remove="Images\stand.png" />
     <None Remove="Images\TopCustomer.png" />
     <None Remove="Images\user.png" />
     <None Remove="Images\warehouse_116463.png" />
@@ -74,20 +82,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\2.jpg" />
     <Resource Include="Images\7-days.png" />
     <Resource Include="Images\account.png" />
     <Resource Include="Images\bike_23739.png" />
     <Resource Include="Images\cancel.png" />
+    <Resource Include="Images\clock.png" />
+    <Resource Include="Images\contract.png" />
     <Resource Include="Images\customer.png" />
     <Resource Include="Images\dashboard.png" />
-    <Resource Include="Images\delivered.png" />
-    <Resource Include="Images\file.png" />
-    <Resource Include="Images\historyOrder.png" />
+    <Resource Include="Images\file2.png" />
+    <Resource Include="Images\history.png" />
     <Resource Include="Images\home.png" />
     <Resource Include="Images\logout.png" />
     <Resource Include="Images\money-bag.png" />
     <Resource Include="Images\older.png" />
-    <Resource Include="Images\quotation.png" />
+    <Resource Include="Images\stand.png" />
     <Resource Include="Images\TopCustomer.png" />
     <Resource Include="Images\user.png" />
     <Resource Include="Images\warehouse_116463.png" />

@@ -7,48 +7,6 @@
         mc:Ignorable="d"
         Title="StoricoOrdiniWindow" WindowState="Maximized">
     <Window.Resources>
-        <!-- Stile per i pulsanti -->
-        <Style x:Key="RoundedButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="BorderBrush" Value="#FF8BAFA1"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Padding" Value="10 5"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Width" Value="120"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="5">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="10">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <!-- Trigger per lo stato IsPressed -->
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="#0000"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
         <!-- Stile per la ListView -->
         <Style x:Key="ListViewStyle" TargetType="{x:Type ListView}">
             <Setter Property="Background" Value="White"/>
@@ -74,18 +32,20 @@
     </Window.Resources>
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/2.jpg"/>
+        </Grid.Background>
+        <StackPanel>
+            <Border Height="76" Margin="0" Background="#FF1E223C" Opacity="1">
+                <TextBlock Text="Storico Ordini" HorizontalAlignment="Center" TextDecorations="Underline" Margin="10 20 10 2" FontSize="20" FontFamily="Calibri" FontWeight="Bold" Foreground="LightGray"/>
+            </Border>
+            <Separator Height="1" Background="LightSkyBlue" Margin="0"/>
+        </StackPanel>
+        
         <!-- TextBlock per visualizzare l'orario -->
         <Border BorderThickness="3" CornerRadius="4" BorderBrush="#FF8BAFA1" Height="35" Width="200" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 80 60 0" Padding="2" Background="Black">
             <TextBlock x:Name="OrologioTextBlock" Foreground="White" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Light"/>
         </Border>
-        <!-- Border contenitore per la scritta fissa e il numero -->
-
-        <StackPanel>
-            <Border Height="76" Margin="0" Background="Gray" Opacity="1">
-                <TextBlock Text="Storico Ordini" HorizontalAlignment="Center" TextDecorations="Underline" Margin="10 20 10 2" FontSize="20" FontFamily="Calibri" FontWeight="Bold"/>
-            </Border>
-            <Separator Height="1" Background="#FF80E4AB" Margin="0"/>
-        </StackPanel>
 
         <StackPanel Margin="0 100 0 0" Height="800" VerticalAlignment="Top">
             <!-- Elenco degli stock -->
@@ -94,8 +54,9 @@
                     <GridView>
                         <GridView.ColumnHeaderContainerStyle>
                             <Style TargetType="{x:Type GridViewColumnHeader}">
-                                <Setter Property="Background" Value="#FF80E4AB"/>
+                                <Setter Property="Background" Value="#FF1E223C"/>
                                 <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Foreground" Value="LightGray"/>
                                 <!-- Colore di sfondo verde chiaro per gli header -->
                             </Style>
                         </GridView.ColumnHeaderContainerStyle>

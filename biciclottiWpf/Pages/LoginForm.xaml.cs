@@ -135,9 +135,5 @@ namespace BiciclottiWpf.Pages
                 passwordBox.Password = "Password";
             }
         }
-
-
-
-
     }
 }
