@@ -6,7 +6,7 @@
         xmlns:wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:BiciclottiWpf"
         mc:Ignorable="d"
-        Title="Biciclotti" WindowState="Maximized">
+        Title="GestWave - Dashboard" WindowState="Maximized">
     <!-- Aggiunto DataContext -->
 
     <Window.Resources>
@@ -114,6 +114,7 @@
             <Border Height="76" Margin="0" Background="#FF1E223C" Opacity="1">
                 <TextBlock Text="Home Page" HorizontalAlignment="Center" TextDecorations="Underline" Margin="10 20 10 2" FontSize="20" FontFamily="Calibri" FontWeight="Bold" Foreground="LightGray"/>
             </Border>
+            
             <Separator Height="1" Background="LightSkyBlue" Margin="0"/>
         </StackPanel>
 
