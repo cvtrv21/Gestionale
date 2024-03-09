@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BiciclottiWpf.Pages"
         mc:Ignorable="d"
-        Title="Biciclotti" Width="350" Height="500">
+        Title="GestWave" Width="350" Height="500">
     <Window.Resources>
         <Style x:Key="GreenButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#66FF66"/>
@@ -17,7 +17,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -44,7 +44,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -65,9 +65,12 @@
 
 
     <Grid>
-        <Border BorderBrush="#FF80E4AB" BorderThickness="3" Background="White">      
+        <Border BorderBrush="#FF1E223C" BorderThickness="3" Background="WhiteSmoke">            
             <StackPanel HorizontalAlignment="Center" Orientation="Vertical" >
-                <TextBlock Text="Aggiungi Bicicletta" HorizontalAlignment="Center" TextDecorations="Underline" Margin="10 10 10 40 " FontSize="13" FontFamily="Calibri" FontWeight="Bold"/>
+                <Border Height="36" Margin="0" Background="#FF1E223C" Opacity="1" Width="340">
+                    <TextBlock Text="Aggiungi Articolo" HorizontalAlignment="Center" TextDecorations="Underline" Margin="10 5 10 2" FontSize="17" FontFamily="Calibri" FontWeight="Bold" Foreground="LightGray"/>
+                </Border>
+                <Separator Height="1" Background="LightSkyBlue" Margin="0"/>
                 <!-- Form aggiunta bici -->
                 <TextBlock Text="Marca" Width="200" Margin="10" FontWeight="Bold"/>
                 <TextBox x:Name="MarcaTextBox" Width="200" Padding="2"/>

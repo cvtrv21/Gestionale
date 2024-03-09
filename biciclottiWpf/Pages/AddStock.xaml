@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BiciclottiWpf.Pages"
         mc:Ignorable="d"
-        Title="Biciclotti" Height="700" Width="700">
+        Title="GestWave - Aggiungi Giacenza" Height="750" Width="600">
     <Window.Resources>
         <!-- Stile per la ListView -->
         <Style x:Key="ListViewStyle" TargetType="{x:Type ListView}">
@@ -15,6 +15,7 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="SelectionMode" Value="Single"/>
             <Setter Property="Margin" Value="10"/>
+            <Setter Property="Height" Value="400"/>
             <Setter Property="View">
                 <Setter.Value>
                     <GridView>
@@ -40,7 +41,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -66,7 +67,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -86,19 +87,27 @@
 
     <Grid>
         <StackPanel>
-            <TextBlock Text="Aggiungi Giacenza" HorizontalAlignment="Center" TextDecorations="Underline" Margin="10 10 10 40 " FontSize="15" FontFamily="Calibri" FontWeight="Bold"/>
+            <Border Height="36" Margin="0" Background="#FF1E223C" Opacity="1">
+                <TextBlock Text="Aggiungi Giacenza" HorizontalAlignment="Center" TextDecorations="Underline" Margin="10 5 10 2" FontSize="17" FontFamily="Calibri" FontWeight="Bold" Foreground="LightGray"/>
+            </Border>
+            <Separator Height="1" Background="LightSkyBlue" Margin="0"/>
         </StackPanel>
+       
+        
         <StackPanel>
             <TextBlock Text="Seleziona una Bici dalla tabella a cui aggiungere un riferimento" Margin="100 49"/>
         </StackPanel>
-        <ListView x:Name="dataGridBicycles" Style="{StaticResource ListViewStyle}" Margin="40 70 20 20" HorizontalAlignment="Center" VerticalAlignment="Stretch" SelectionChanged="dataGridBicycles_SelectionChanged">
+        
+        <ListView x:Name="dataGridBicycles" Style="{StaticResource ListViewStyle}" Margin="40 70 20 20" HorizontalAlignment="Center" VerticalAlignment="Top" SelectionChanged="dataGridBicycles_SelectionChanged">
             <!-- Definizione degli elementi nella ListView -->
             <ListView.View>
                 <GridView>
                     <!-- Definizione delle colonne -->
                     <GridView.ColumnHeaderContainerStyle>
                         <Style TargetType="{x:Type GridViewColumnHeader}">
-                            <Setter Property="Background" Value="#FF80E4AB"/>
+                            <Setter Property="Background" Value="#FF1E223C"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Foreground" Value="LightGray"/>
                             <!-- Colore di sfondo verde per gli header -->
                         </Style>
                     </GridView.ColumnHeaderContainerStyle>
@@ -110,16 +119,15 @@
             </ListView.View>
         </ListView>
         
-        <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Margin="200 400 200 20" >
+        <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Margin="200 500 200 10" >
             <!-- Form aggiunta bici -->
             <TextBlock Text="Taglia" Width="200" Margin="10" FontWeight="Bold"/>
             <TextBox x:Name="TagliaTextBox" Width="200" Padding="2"/>
             <TextBlock Text="Quantita" Width="200" Margin="10" FontWeight="Bold"/>
             <TextBox x:Name="QuantitaTextBox" Width="200" Padding="2"/>
             <!-- Pulsante per aggiungere una nuova bicicletta -->
-            <Button Content="Aggiungi" Click="AggiungiStock_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Width="120" Height="40" Style="{StaticResource GreenButtonStyle}" Background="#FF80E4AB"/>
-            <Button Content="Annulla" Click="AnnullaButton_Click" Width="80" Height="30"
-            Margin="1" Style="{StaticResource RedButtonStyle }" Background="#FFF14C46"/>
+            <Button Content="Aggiungi" Click="AggiungiStock_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Width="100" Height="30" Style="{StaticResource GreenButtonStyle}" Background="#FF80E4AB"/>
+            <Button Content="Annulla" Click="AnnullaButton_Click" Width="100" Height="30" Margin="1" Style="{StaticResource RedButtonStyle }" Background="#FFF14C46"/>
         </StackPanel>
     </Grid>
 </Window>

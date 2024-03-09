@@ -56,6 +56,8 @@
             <Separator Height="1" Background="LightSkyBlue" Margin="0"/>
         </StackPanel>
 
+        <Image Source="/Images/Logo.png" Height="190" Width="200" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 -45 0 0"/>
+
         <!-- Barra Laterale -->
         <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 77 0 0" Background="#FF1E223C" BorderBrush="#FF1E223C" BorderThickness="1 0" CornerRadius="0" Padding="8" Width="250" Height="915"/>
 
@@ -85,7 +87,7 @@
         <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 -2">
             <!-- Spazio vuoto con colore di sfondo -->
             <Border Height="20" Margin="0" Background="Black" Opacity="0.7">
-                <TextBlock Text="© 2024 Development By: CTR Software. Tutti i diritti riservati." Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="© 2024 Development By: SoftWave. Tutti i diritti riservati." Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
         </StackPanel>
     </Grid>

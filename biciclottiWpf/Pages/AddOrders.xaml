@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BiciclottiWpf.Pages"
         mc:Ignorable="d"
-        Title="AddOrders" Height="750" Width="600">
+        Title="GestWave - Nuovo Ordine" Height="750" Width="600">
     <Window.Resources>
         <!-- Stile per la ListView -->
         <Style x:Key="ListViewStyle" TargetType="{x:Type ListView}">
@@ -20,7 +20,7 @@
                     <GridView>
                         <!-- Definizione delle colonne -->
                         <GridView.ColumnHeaderContainerStyle>
-                            <Style TargetType="{x:Type GridViewColumnHeader}">                                
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
                                 <!-- Colore di sfondo verde per gli header -->
                             </Style>
                         </GridView.ColumnHeaderContainerStyle>
@@ -86,7 +86,7 @@
     <Grid>
         <StackPanel>
             <Border Height="36" Margin="0" Background="#FF1E223C" Opacity="1">
-                <TextBlock Text="Nuovo Ordine" HorizontalAlignment="Center" TextDecorations="Underline" Margin="10 5 10 2" FontSize="17" FontFamily="Calibri" FontWeight="Bold" Foreground="LightGray"/>
+                <TextBlock Text="Nuovo Ordine" HorizontalAlignment="Center" TextDecorations="Underline" VerticalAlignment="Center" FontSize="17" FontFamily="Calibri" FontWeight="Bold" Foreground="LightGray"/>
             </Border>
             <Separator Height="1" Background="LightSkyBlue" Margin="0"/>
         </StackPanel>
@@ -94,8 +94,8 @@
         <StackPanel>
             <TextBlock Text="Selezionare la bicicletta da ordinare " Margin="60 50 0 0"/>
         </StackPanel>
-        
-        <ListView x:Name="dataGridBicycles" Style="{StaticResource ListViewStyle}" Margin="40 70 20 20" HorizontalAlignment="Center" VerticalAlignment="Top" SelectionChanged="dataGridBicycles_SelectionChanged" Height="300">
+
+        <ListView x:Name="dataGridBicycles" Style="{StaticResource ListViewStyle}" Margin="56,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="dataGridBicycles_SelectionChanged" Height="360">
             <!-- Definizione degli elementi nella ListView -->
             <ListView.View>
                 <GridView>
@@ -116,7 +116,7 @@
             </ListView.View>
         </ListView>
 
-        <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Margin="200 350 200 20" >
+        <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Margin="0,435,0,10" >
             <!-- Form aggiunta bici -->
             <TextBlock Text="Data Consegna" Width="170" Margin="0 40 0 0" FontWeight="Bold"/>
             <DatePicker x:Name="DataConsegnaDatePicker" Width="170" Margin="5" SelectedDate="{Binding StartDate}" DisplayDateStart="01/01/2000"/>
@@ -124,11 +124,10 @@
             <TextBox x:Name="ClienteTextBox" Width="170" Padding="2"/>
             <TextBlock Text="Quantita" Width="170" Margin="5" FontWeight="Bold"/>
             <TextBox x:Name="QuantitaTextBox" Width="170" Padding="2"/>
-            
+
             <!-- Pulsante per aggiungere una nuova bicicletta -->
             <Button Content="Aggiungi" Click="AggiungiOrdine_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10 30 10 10" Width="100" Height="30" Style="{StaticResource GreenButtonStyle}" Background="#FF80E4AB"/>
-            <Button Content="Annulla" Click="AnnullaButton_Click" Width="100" Height="30"
-        Margin="1" Style="{StaticResource RedButtonStyle }" Background="#FFF14C46"/>
+            <Button Content="Annulla" Click="AnnullaButton_Click" Width="100" Height="30" Margin="1" Style="{StaticResource RedButtonStyle }" Background="#FFF14C46"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BiciclottiWpf"
         mc:Ignorable="d"
-        Title="Biciclotti" WindowState="Maximized">
+        Title="GestWave - Anagrafica Articoli" WindowState="Maximized">
     <Window.Resources>
         <!-- Stile per i pulsanti -->
         <Style x:Key="RoundedButtonStyle" TargetType="Button">
@@ -83,9 +83,10 @@
             </Border>
             <Separator Height="1" Background="LightSkyBlue" Margin="0"/>
         </StackPanel>
+        <Image Source="/Images/Logo.png" Height="190" Width="200" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 -45 0 0"/>
         
         <!-- TextBlock per visualizzare l'orario -->
-        <Border BorderThickness="3" CornerRadius="4" BorderBrush="#FF8BAFA1" Height="35" Width="200" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 80 60 0" Padding="2" Background="Black">
+        <Border BorderThickness="3" CornerRadius="4" BorderBrush="DarkOrange" Height="35" Width="200" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 80 60 0" Padding="2" Background="Black">
             <TextBlock x:Name="OrologioTextBlock" Foreground="White" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift Light"/>
         </Border>
         <!-- Border contenitore per la scritta fissa e il numero -->
