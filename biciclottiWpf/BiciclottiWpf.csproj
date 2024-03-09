@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>bicycle_bike_icon_180257.ico</ApplicationIcon>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Icon.ico" />
     <None Remove="Images\11.jpg" />
     <None Remove="Images\12.jpg" />
     <None Remove="Images\2.jpg" />
@@ -65,7 +66,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="bicycle_bike_icon_180257.ico" />
+    <Content Include="Icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
