@@ -24,7 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Icon-Black.ico" />
     <None Remove="Icon.ico" />
+    <None Remove="Icon.png" />
     <None Remove="Images\11.jpg" />
     <None Remove="Images\12.jpg" />
     <None Remove="Images\2.jpg" />
